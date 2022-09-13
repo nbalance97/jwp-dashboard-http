@@ -30,10 +30,9 @@ public class Cookie {
     }
 
     public String generateCookieEntries() {
-        List<String> cookieEntries = cookies.entrySet().stream()
+        return cookies.entrySet().stream()
                 .map(entry -> entry.getKey() + "=" + entry.getValue())
-                .collect(Collectors.toList());
+                .collect(Collectors.joining("; "));
 
-        return String.join("; ", cookieEntries);
     }
 }
