@@ -57,7 +57,8 @@ public class LoginController extends AbstractController {
 
     @Override
     protected void doGet(HttpRequest request, HttpResponse response) throws Exception {
-        String jSessionId = request.getCookies().getCookie("JSESSIONID");
+        Cookie cookies = request.getCookies();
+        String jSessionId = cookies.getCookie("JSESSIONID");
 
         if (jSessionId != null) {
             processSessionLogin(response, jSessionId);
