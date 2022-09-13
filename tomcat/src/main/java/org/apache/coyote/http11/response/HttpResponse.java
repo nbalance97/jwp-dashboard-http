@@ -14,8 +14,6 @@ import org.apache.coyote.http11.constant.HttpStatus;
 import org.apache.coyote.http11.cookie.Cookie;
 
 public class HttpResponse {
-
-    private static final String SET_COOKIE = "Set-Cookie";
     private static final String HEADER_DELIMITER = ": ";
 
     private final HttpStatusLine httpStatusLine;
@@ -53,7 +51,7 @@ public class HttpResponse {
         }
 
         if (!cookie.isEmpty()) {
-            stringBuilder.append(SET_COOKIE + HEADER_DELIMITER + cookie.generateCookieEntries());
+            stringBuilder.append(Cookie.SET_COOKIE + HEADER_DELIMITER + cookie.generateCookieEntries());
         }
 
         stringBuilder.append("\r\n");

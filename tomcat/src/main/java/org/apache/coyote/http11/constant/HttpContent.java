@@ -3,9 +3,9 @@ package org.apache.coyote.http11.constant;
 import java.util.Arrays;
 
 public enum HttpContent {
-    CSS("css", "text/css"),
-    JAVASCRIPT("js", "application/javascript"),
-    HTML("html", "text/html;charset=utf-8");
+    CSS(".css", "text/css"),
+    JAVASCRIPT(".js", "application/javascript"),
+    HTML(".html", "text/html;charset=utf-8");
 
     private final String extension;
     private final String contentType;
@@ -17,10 +17,15 @@ public enum HttpContent {
 
     public static String extensionToContentType(String extension) {
         return Arrays.stream(values())
-                .filter(value -> value.extension.equals(extension))
+                .filter(value -> value.extension.endsWith(extension))
                 .map(value -> value.contentType)
                 .findAny()
                 .orElse("text/plain");
+    }
+
+    public static boolean isResource(String url) {
+        return Arrays.stream(values())
+                .anyMatch(value -> url.endsWith(value.extension));
     }
 
     public String getContentType() {

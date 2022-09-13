@@ -3,6 +3,7 @@ package org.apache.coyote.http11.request;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.coyote.http11.constant.HttpContent;
 import org.apache.coyote.http11.constant.HttpHeader;
 import org.apache.coyote.http11.constant.HttpMethod;
 import org.apache.coyote.http11.cookie.Cookie;
@@ -25,7 +26,7 @@ public class HttpRequest {
     public boolean isResource() {
         String url = getUrl();
 
-        return url.endsWith(".html") || url.endsWith(".css") || url.endsWith(".js") || url.endsWith(".ico");
+        return HttpContent.isResource(url);
     }
 
     public boolean hasCookie() {

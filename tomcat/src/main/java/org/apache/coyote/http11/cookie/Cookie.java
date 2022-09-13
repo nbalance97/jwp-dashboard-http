@@ -7,6 +7,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Cookie {
+
+    public static final String SET_COOKIE = "Set-Cookie";
+
     private final Map<String, String> cookies;
 
     public Cookie() {
@@ -33,6 +36,5 @@ public class Cookie {
         return cookies.entrySet().stream()
                 .map(entry -> entry.getKey() + "=" + entry.getValue())
                 .collect(Collectors.joining("; "));
-
     }
 }
