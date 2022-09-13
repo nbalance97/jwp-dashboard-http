@@ -47,7 +47,6 @@ public class Http11Processor implements Runnable, Processor {
     private void execute(OutputStream outputStream, HttpRequest request) throws Exception {
         HttpResponse response = new HttpResponse();
         Controller controller = RequestMapping.mapping(request);
-        System.out.println(controller.getClass());
 
         controller.service(request, response);
 
